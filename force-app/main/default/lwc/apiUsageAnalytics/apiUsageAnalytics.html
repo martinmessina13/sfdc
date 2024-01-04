@@ -1,0 +1,39 @@
+<template>
+    <div class="slds-grid slds-p-left_xx-large date-picker">
+        <div class="slds-col slds-size_1-of-4 slds-p-around_x-small slds">
+            <lightning-input 
+            type="date" 
+            name="from-date" 
+            label="From" 
+            value={fromDate}
+            onchange={handleDateChange}
+            date-style="long"
+            ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-4 slds-p-around_x-small">
+            <lightning-input 
+            type="date" 
+            name="to-date" 
+            label="To" 
+            value={toDate}
+            onchange={handleDateChange}
+            date-style="long"
+            ></lightning-input>
+        </div>
+    </div>
+    <div class="slds-p-top_x-large bar-chart">
+            <template if:true={isLoading}>
+                <lightning-spinner 
+                alternative-text="Loading graph"
+                size="medium"
+                variant="base">
+                </lightning-spinner>
+            </template>
+            <c-bar-chart 
+            no-assets={noAssets}
+            api-data={apiData}
+            axis-labels={axisLabels}
+            period={period}>
+            </c-bar-chart>
+    </div>
+</template>
